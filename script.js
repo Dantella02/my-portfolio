@@ -31,6 +31,7 @@ reveals.forEach((element) => revealObserver.observe(element));
 const activeSectionObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
+      sections.forEach((section) => section.classList.toggle('active-section', section === entry.target));
       navLinks.forEach((link) => {
         link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
       });
